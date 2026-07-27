@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BENTHIC SWARM - AI Autonomous Research Swarm</title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css?v=1.0.1">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Volumetric cinematic underwater scene -->
+    <div class="underwater-container">
+        <div class="light-rays"></div>
+        <div class="ocean-fog"></div>
+        <div id="bubbles" class="bubbles-container"></div>
+    </div>
+
+    <div class="app-wrapper">
+        <!-- ================= LEFT SIDEBAR ================= -->
+        <aside class="sidebar">
+            <a href="#" id="header-logo" class="sidebar-header" style="text-decoration: none; color: inherit;">
+                <i data-lucide="cpu" style="width: 24px; height: 24px;"></i>
+                <div>
+                    <div class="sidebar-brand">BENTHIC SWARM</div>
+                    <div class="sidebar-brand-sub">Multi-Agent Operating System</div>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#" id="menu-home" class="menu-item active">
+                            <i data-lucide="home"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="menu-new" class="menu-item">
+                            <i data-lucide="search-code"></i>
+                            <span>New Research</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="menu-agents" class="menu-item">
+                            <i data-lucide="users"></i>
+                            <span>Agents</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="menu-sources" class="menu-item">
+                            <i data-lucide="globe"></i>
+                            <span>Sources</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="menu-reports" class="menu-item">
+                            <i data-lucide="file-check"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="menu-history" class="menu-item">
+                            <i data-lucide="history"></i>
+                            <span>History</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="menu-analytics" class="menu-item">
+                            <i data-lucide="activity"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="menu-settings" class="menu-item">
+                            <i data-lucide="settings"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Credits indicator gauge -->
+            <div class="credits-widget">
+                <div class="credits-label">API Credits</div>
+                <div class="credits-val">5,540 / 12,000</div>
+                <div class="credits-progress">
+                    <div class="credits-bar"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ================= MAIN PLATFORM SPACE ================= -->
+        <div class="main-content">
+            <!-- Theme controller -->
+            <div class="main-header">
+                <button id="theme-btn" class="theme-toggle" aria-label="Toggle theme">
+                    <i id="theme-sun-icon" data-lucide="sun"></i>
+                    <i id="theme-moon-icon" data-lucide="moon" style="display: none;"></i>
+                </button>
+            </div>
+
+            <!-- ================= SCREEN 1: LANDING & SEARCH ================= -->
+            <main id="home-screen" class="screen active">
+                <section class="hero">
+                    <h1>Explore. Validate. Understand.</h1>
+                    <p>Your AI Research Swarm is ready to formulate plans, retrieve documents, and compile verified briefs.</p>
+                    
+                    <!-- Search Input container -->
+                    <div class="search-container">
+                        <input type="text" id="search-box" class="search-input" placeholder="Initiate research workspace query...">
+                        <button id="start-btn" class="search-btn">
+                            <i data-lucide="compass"></i>
+                            <span>Search Swarm</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Statistics cards widget -->
+                <section class="popular-section">
+                    <h2 class="section-title">
+                        <i data-lucide="bar-chart-2"></i>
+                        Swarm Operations Dashboard
+                    </h2>
+                    
+                    <div class="popular-grid">
+                        <!-- Stat card 1: Active Research -->
+                        <div class="glass-card topic-card" style="cursor: default;">
+                            <h3>
+                                <i data-lucide="activity"></i>
+                                Active Research
+                            </h3>
+                            <div id="stat-active-research" class="stat-val">4</div>
+                        </div>
+
+                        <!-- Stat card 2: Sources Found -->
+                        <div class="glass-card topic-card" style="cursor: default;">
+                            <h3>
+                                <i data-lucide="globe"></i>
+                                Sources Found
+                            </h3>
+                            <div id="stat-total-sources" class="stat-val">1,873</div>
+                        </div>
+
+                        <!-- Stat card 3: Papers Analyzed -->
+                        <div class="glass-card topic-card" style="cursor: default;">
+                            <h3>
+                                <i data-lucide="book-open"></i>
+                                Papers Analyzed
+                            </h3>
+                            <div id="stat-total-papers" class="stat-val">756</div>
+                        </div>
+
+                        <!-- Stat card 4: Reports Generated -->
+                        <div class="glass-card topic-card" style="cursor: default;">
+                            <h3>
+                                <i data-lucide="file-check"></i>
+                                Reports Generated
+                            </h3>
+                            <div id="stat-total-briefs" class="stat-val">32</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Popular topics -->
+                <section class="popular-section" style="margin-top: 3.5rem;">
+                    <h2 class="section-title">
+                        <i data-lucide="flame"></i>
+                        Popular Topics
+                    </h2>
+                    <div class="pills-container">
+                        <button class="pill-btn" data-topic="Artificial General Intelligence">Artificial General Intelligence</button>
+                        <button class="pill-btn" data-topic="Cybersecurity trends">Cybersecurity</button>
+                        <button class="pill-btn" data-topic="Mars Colonization">Mars Colonization</button>
+                        <button class="pill-btn" data-topic="AI Ethics">AI Ethics</button>
+                        <button class="pill-btn" data-topic="Climate Change">Climate Change</button>
+                        <button class="pill-btn" data-topic="Quantum Computing">Quantum Computing</button>
+                    </div>
+                </section>
+
+                <!-- System Config (Under the hood) -->
+                <section class="popular-section" style="margin-top: 3.5rem; display: none;">
+                    <!-- Maintain element links for app.js status loading -->
+                    <span id="groq-status"></span><span id="groq-status-text"></span>
+                    <span id="tavily-status"></span><span id="tavily-status-text"></span>
+                    <span id="db-status"></span><span id="db-status-text"></span>
+                    <span id="chroma-status"></span><span id="chroma-status-text"></span>
+                    <span id="system-mode"></span><span id="system-mode-badge"></span>
+                </section>
+
+                <!-- Recent briefs block -->
+                <section id="history-block" class="history-section" style="display: none;">
+                    <h2 class="section-title">
+                        <i data-lucide="folder-git-2"></i>
+                        Autonomous Indexes
+                    </h2>
+                    <div id="history-list" class="history-grid">
+                        <!-- Populated dynamically via app.js -->
+                    </div>
+                </section>
+            </main>
+
+            <!-- ================= SCREEN 2: PROGRESS WORKSPACE ================= -->
+            <main id="loading-screen" class="screen">
+                <div class="loading-header-block">
+                    <h2>Swarm Orchestration Live</h2>
+                    <p id="loading-sub">Initiating planner coordinator schema...</p>
+                </div>
+
+                <div class="loading-layout">
+                    <!-- Interactive vertical graph pipeline -->
+                    <div class="workflow-graph-card glass-card">
+                        <svg class="workflow-svg" viewBox="0 0 220 560">
+                            <defs>
+                                <marker id="arrow" viewBox="0 0 10 10" refX="22" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--border)" />
+                                </marker>
+                            </defs>
+                            <!-- Start Node -->
+                            <g id="node-start" class="workflow-node">
+                                <circle class="node-circle" cx="110" cy="30" r="18" />
+                                <text class="node-text" cx="110" cy="30" x="110" y="34" text-anchor="middle">Start</text>
+                            </g>
+
+                            <!-- Edge Coordinator -->
+                            <line id="edge-coordinator" class="workflow-edge" x1="110" y1="48" x2="110" y2="92" marker-end="url(#arrow)" />
+
+                            <!-- Coordinator Agent Node -->
+                            <g id="node-coordinator" class="workflow-node">
+                                <circle class="node-circle" cx="110" cy="110" r="18" />
+                                <text class="node-text" cx="110" cy="110" x="110" y="114" text-anchor="middle">Plan</text>
+                            </g>
+
+                            <!-- Edge Researcher -->
+                            <line id="edge-researcher" class="workflow-edge" x1="110" y1="128" x2="110" y2="172" marker-end="url(#arrow)" />
+
+                            <!-- Research Agent Node -->
+                            <g id="node-researcher" class="workflow-node">
+                                <circle class="node-circle" cx="110" cy="190" r="18" />
+                                <text class="node-text" cx="110" cy="190" x="110" y="194" text-anchor="middle">Search</text>
+                            </g>
+
+                            <!-- Edge Fact Checker -->
+                            <line id="edge-fact_checker" class="workflow-edge" x1="110" y1="208" x2="110" y2="252" marker-end="url(#arrow)" />
+
+                            <!-- Fact Verification Agent Node -->
+                            <g id="node-fact_checker" class="workflow-node">
+                                <circle class="node-circle" cx="110" cy="270" r="18" />
+                                <text class="node-text" cx="110" cy="270" x="110" y="274" text-anchor="middle">Verify</text>
+                            </g>
+
+                            <!-- Edge Summarizer -->
+                            <line id="edge-summarizer" class="workflow-edge" x1="110" y1="288" x2="110" y2="332" marker-end="url(#arrow)" />
+
+                            <!-- Summarizer Agent Node -->
+                            <g id="node-summarizer" class="workflow-node">
+                                <circle class="node-circle" cx="110" cy="350" r="18" />
+                                <text class="node-text" cx="110" cy="350" x="110" y="354" text-anchor="middle">Digest</text>
+                            </g>
+
+                            <!-- Edge Writer -->
+                            <line id="edge-writer" class="workflow-edge" x1="110" y1="368" x2="110" y2="412" marker-end="url(#arrow)" />
+
+                            <!-- Writer Agent Node -->
+                            <g id="node-writer" class="workflow-node">
+                                <circle class="node-circle" cx="110" cy="430" r="18" />
+                                <text class="node-text" cx="110" cy="430" x="110" y="434" text-anchor="middle">Write</text>
+                            </g>
+
+                            <!-- Edge Memory -->
+                            <line id="edge-memory" class="workflow-edge" x1="110" y1="448" x2="110" y2="492" marker-end="url(#arrow)" />
+
+                            <!-- Memory Agent Node -->
+                            <g id="node-memory" class="workflow-node">
+                                <circle class="node-circle" cx="110" cy="510" r="18" />
+                                <text class="node-text" cx="110" cy="510" x="110" y="514" text-anchor="middle">Store</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- Telemetry log console -->
+                    <div class="agent-console-card glass-card">
+                        <div class="console-header">
+                            <div class="console-title">
+                                <i data-lucide="terminal"></i>
+                                Swarm Telemetry Logs
+                            </div>
+                            <div style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 600; color: var(--glow-primary);">
+                                Time: <span id="elapsed-counter">0.0s</span>
+                            </div>
+                        </div>
+                        <div id="console-logs" class="console-logs-wrapper">
+                            <!-- Populated dynamically via app.js -->
+                        </div>
+                        <div class="timeline-timeline">
+                            <div id="dot-coordinator" class="timeline-dot" title="Coordinator">1</div>
+                            <div id="dot-researcher" class="timeline-dot" title="Researcher">2</div>
+                            <div id="dot-fact_checker" class="timeline-dot" title="Fact Check">3</div>
+                            <div id="dot-summarizer" class="timeline-dot" title="Summarizer">4</div>
+                            <div id="dot-writer" class="timeline-dot" title="Report Writer">5</div>
+                            <div id="dot-memory" class="timeline-dot" title="Memory Core">6</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- ================= SCREEN 3: OUTPUT CANVAS ================= -->
+            <main id="output-screen" class="screen">
+                <div class="output-layout">
+                    <!-- Sidebar indicators -->
+                    <aside class="analytics-sidebar">
+                        <!-- Confidence radial meter -->
+                        <div class="glass-card score-card">
+                            <div class="score-title">Swarm Confidence</div>
+                            <div class="confidence-radial">
+                                <svg class="confidence-svg" viewBox="0 0 140 140" width="140" height="140">
+                                    <defs>
+                                        <linearGradient id="radial-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="var(--glow-primary)" />
+                                            <stop offset="100%" stop-color="var(--glow-secondary)" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle class="radial-bg" cx="70" cy="70" r="60" />
+                                    <circle class="radial-fill" id="confidence-radial-fill" cx="70" cy="70" r="60" />
+                                </svg>
+                                <div id="confidence-text" class="radial-text">0%</div>
+                            </div>
+                        </div>
+
+                        <!-- Web count card -->
+                        <div class="glass-card stat-card">
+                            <div class="stat-icon">
+                                <i data-lucide="globe"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h5>Web Sources</h5>
+                                <p id="stat-web-count">0</p>
+                            </div>
+                        </div>
+
+                        <!-- Academic count card -->
+                        <div class="glass-card stat-card">
+                            <div class="stat-icon">
+                                <i data-lucide="book-open"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h5>Academic Papers</h5>
+                                <p id="stat-paper-count">0</p>
+                            </div>
+                        </div>
+
+                        <!-- Downloads actions list -->
+                        <div class="glass-card download-actions-card">
+                            <button id="dl-pdf-btn" class="action-btn pdf">
+                                <i data-lucide="download"></i>
+                                Download PDF report
+                            </button>
+                            <button id="dl-docx-btn" class="action-btn docx">
+                                <i data-lucide="file-check"></i>
+                                Download Word Brief
+                            </button>
+                            <button id="new-research-btn" class="action-btn new-search">
+                                <i data-lucide="refresh-cw"></i>
+                                New Swarm Research
+                            </button>
+                        </div>
+                    </aside>
+
+                    <!-- Academic styled cover report -->
+                    <article class="glass-card output-content-card">
+                        <div class="output-topic-header">
+                            <h2 id="output-topic">Autonomous Briefing</h2>
+                            <div class="subtitle">Compiled by Benthic Swarm Orchestration Engine</div>
+                        </div>
+
+                        <!-- Navigation Tabs -->
+                        <div class="tabs-nav">
+                            <button class="tab-btn active" data-tab="tab-summary">Executive Summary</button>
+                            <button class="tab-btn" data-tab="tab-references">Citations & References</button>
+                            <button class="tab-btn" data-tab="tab-logs">Swarm Telemetry</button>
+                        </div>
+
+                        <!-- Tabs Panes -->
+                        <!-- 1. Executive Briefing -->
+                        <div id="tab-summary" class="tab-pane active">
+                            <div id="output-exec-summary" class="summary-block">
+                                <!-- Populated dynamically via app.js -->
+                            </div>
+                            <div id="output-findings-list" class="findings-list">
+                                <!-- Populated dynamically via app.js -->
+                            </div>
+                        </div>
+
+                        <!-- 2. Citation references -->
+                        <div id="tab-references" class="tab-pane">
+                            <div id="output-sources-list">
+                                <!-- Populated dynamically via app.js -->
+                            </div>
+                        </div>
+
+                        <!-- 3. Swarm logs timeline -->
+                        <div id="tab-logs" class="tab-pane">
+                            <div id="output-logs-timeline" class="logs-timeline-list">
+                                <!-- Populated dynamically via app.js -->
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Application scripts -->
+    <script src="/static/js/app.js?v=1.0.1"></script>
+    <script>
+        // Init Lucide icons on load
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
